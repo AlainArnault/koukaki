@@ -41,6 +41,17 @@
     transform-origin: center;
   }
 
+// Apparition des titres
+.fade-up {
+    display: inline-block; /* Permet à la translation de fonctionner correctement */
+    transform: translateY(100px); /* Décale le titre vers le bas */
+    transition: transform 1s ease-out; /* Durée et type de transition */
+}
+
+.fade-up.visible {
+    transform: translateY(0); /* Rétablit la position originale */
+}
+
 
   
   
