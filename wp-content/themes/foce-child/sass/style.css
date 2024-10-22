@@ -1,0 +1,40 @@
+@charset "UTF-8";
+.fade-in {
+  opacity: 0; /* Opacité initiale */
+  animation: fadeInUp 2s forwards; /* Appel de l'animation */
+}
+
+.fade-in p {
+  animation: none !important; /* Force l'exclusion des paragraphes */
+  opacity: 1 !important; /* Assure que l'opacité reste fixe */
+  transform: none !important; /* Assure que la transformation ne s'applique pas */
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0; /* Au début, invisible */
+    transform: translateY(200px); /* Déplacement vers le bas */
+  }
+  100% {
+    opacity: 1; /* À la fin, visible */
+    transform: translateY(0); /* Position finale */
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.story h2::after,
+.story__article::after,
+#studio h2::before,
+#studio h2::after,
+.site-footer::before,
+.site-footer::after,
+.site-footer ul::after {
+  animation: rotate 10s linear infinite;
+  transform-origin: center;
+}/*# sourceMappingURL=style.css.map */
