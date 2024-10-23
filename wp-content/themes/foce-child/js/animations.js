@@ -1,31 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const firstWord = document.querySelector('.first-word');
-    const secondWord = document.querySelector('.second-word');
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
 
-    function checkVisibility() {
-        const windowHeight = window.innerHeight;
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
 
-        // Vérifier si le premier titre (L'histoire) est visible
-        const firstTitle = document.querySelector('h2:first-of-type .fade-up');
-        const firstTitleTop = firstTitle.getBoundingClientRect().top;
+                // Pour les premiers mots
+                if (target.classList.contains('first-word')) {
+                    target.classList.add('visible');
+                }
+                // Pour les deuxièmes mots avec un délai
+                else if (target.classList.contains('second-word')) {
+                    setTimeout(() => {
+                        target.classList.add('visible');
+                    }, 500); // Délai de 500ms pour le deuxième mot
+                } 
+                // Pour les titres sans deux mots
+                else {
+                    target.classList.add('visible');
+                }
+                observer.unobserve(target);
+            }
+        });
+    }, options);
 
-        if (firstTitleTop < windowHeight - 50) {
-            firstTitle.classList.add('visible');
-        }
-
-        // Vérifier si le second mot est visible
-        const secondWordTop = firstWord.getBoundingClientRect().top;
-
-        if (secondWordTop < windowHeight - 50) {
-            firstWord.classList.add('visible');
-
-            // Attendre que le premier mot soit visible avant d'afficher le second mot
-            setTimeout(() => {
-                secondWord.classList.add('visible');
-            }, 500); // Délai de 500 ms pour le second mot
-        }
-    }
-
-    window.addEventListener('scroll', checkVisibility);
-    checkVisibility(); // Vérifie immédiatement au chargement
+    const fadeUpElements = document.querySelectorAll('.fade-up');
+    fadeUpElements.forEach(el => observer.observe(el));
 });
