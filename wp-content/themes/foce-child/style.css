@@ -1,23 +1,81 @@
-@charset "UTF-8";
-.fade-in {
-  opacity: 0; /* Opacité initiale */
-  animation: fadeInUp 2s forwards; /* Appel de l'animation */
+.banner {
+  position: relative;
+  min-height: 806px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.banner #background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.banner .content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+}
+.banner img {
+  margin-top: -10%;
+  width: 50%;
+}
+@media (max-width: 768px) {
+  .banner #background-video {
+    display: none;
+  }
 }
 
-.fade-in p {
-  animation: none !important; /* Force l'exclusion des paragraphes */
-  opacity: 1 !important; /* Assure que l'opacité reste fixe */
-  transform: none !important; /* Assure que la transformation ne s'applique pas */
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 2s forwards;
 }
 
 @keyframes fadeInUp {
   0% {
-    opacity: 0; /* Au début, invisible */
-    transform: translateY(200px); /* Déplacement vers le bas */
+    opacity: 0;
+    transform: translateY(200px);
   }
   100% {
-    opacity: 1; /* À la fin, visible */
-    transform: translateY(0); /* Position finale */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-down {
+  opacity: 0;
+  animation: fadeInDown 2s forwards;
+}
+
+.banner {
+  background-image: none;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-appear {
+  opacity: 0;
+  animation: fadeInAppear 2s forwards;
+}
+
+@keyframes fadeInAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 @keyframes rotate {
@@ -40,18 +98,18 @@
 }
 
 .fade-up {
-  display: inline-block; /* Permet à la translation de fonctionner correctement */
-  transform: translateY(100px); /* Décale le titre vers le bas */
-  transition: transform 1s ease-out; /* Durée et type de transition */
+  display: inline-block;
+  transform: translateY(100px);
+  transition: transform 1s ease-out;
 }
 
 .fade-up.visible {
-  transform: translateY(0); /* Rétablit la position originale */
+  transform: translateY(0);
 }
 
 .festival-nomination {
   display: grid;
-  grid-template-columns: 70% 30%; /* Définit deux colonnes */
+  grid-template-columns: 70% 30%;
   width: 70%;
   margin: auto;
   height: 200px;
@@ -63,10 +121,10 @@
   background-size: 100% 100%;
   background-position: center;
 }
-
 .festival-nomination-col1 > p {
   color: #FFF5E9;
   font-size: 1.8rem;
+  font-weight: 700;
   text-align: left;
   padding: 6%;
 }
@@ -74,10 +132,17 @@
 .festival-nomination-col2 {
   align-self: center;
 }
-
 .festival-nomination-col2 > img {
   width: 100%;
   height: auto;
+}
+
+/*Caroussel personnages*/
+.story #characters {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 /*# sourceMappingURL=style.css.map */

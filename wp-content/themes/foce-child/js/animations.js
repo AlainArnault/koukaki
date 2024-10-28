@@ -1,3 +1,4 @@
+//Animation des titres au scroll
 document.addEventListener("DOMContentLoaded", function () {
     const options = {
         root: null,
@@ -31,4 +32,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const fadeUpElements = document.querySelectorAll('.fade-up');
     fadeUpElements.forEach(el => observer.observe(el));
+});
+
+//Animation carroussel des personnages
+const swiper = new Swiper('.swiper-container', {
+    spaceBetween: 60,
+    speed: 1750,
+    autoplay: {
+        delay: 400,
+    },
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    loop: true,
+    slidesPerView: 3,
+    coverflowEffect: {
+        rotate: 50,
+        depth: 100,
+        slideShadows: false,
+    },
 });

@@ -1,61 +1,137 @@
-  .fade-in {
-    opacity: 0; /* Opacité initiale */
-    animation: fadeInUp 2s forwards; /* Appel de l'animation */
+// Variables
+$color-text: #FFF5E9;
+$font-size-large: 2rem;
+$font-size-small: 1.8rem;
+
+// Styles de la bannière
+.banner {
+  position: relative;
+  min-height: 806px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  #background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
   }
 
-  .fade-in p {
-    animation: none !important; /* Force l'exclusion des paragraphes */
-    opacity: 1 !important; /* Assure que l'opacité reste fixe */
-    transform: none !important; /* Assure que la transformation ne s'applique pas */
+  .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+  }
+
+  img {
+    margin-top: -10%;
+    width: 50%;
+  }
+
+  // Masquer la vidéo et afficher l'image sur mobile
+  @media (max-width: 768px) {
+    #background-video {
+      display: none;
+    }
+  }
 }
-  
-    @keyframes fadeInUp {
-    0% {
-      opacity: 0; /* Au début, invisible */
-      transform: translateY(200px); /* Déplacement vers le bas */
-    }
-    100% {
-      opacity: 1; /* À la fin, visible */
-      transform: translateY(0); /* Position finale */
-    }
-  }
 
-  //Créer les rotation de fleurs
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+// Animation des sections
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 2s forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
   }
-  
-  .story h2::after,
-  .story__article::after,
-  #studio h2::before,
-  #studio h2::after,
-  .site-footer::before,
-  .site-footer::after,
-  .site-footer ul::after {
-    animation: rotate 10s linear infinite;
-    transform-origin: center;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+// Animation de la video bannière
+.fade-in-down {
+  opacity: 0;
+  animation: fadeInDown 2s forwards;
+}
+
+.banner {
+	background-image: none
+}
+
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animation du logo bannière
+.fade-in-appear {
+  opacity: 0;
+  animation: fadeInAppear 2s forwards;
+}
+
+@keyframes fadeInAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Création des rotations de fleurs
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.story h2::after,
+.story__article::after,
+#studio h2::before,
+#studio h2::after,
+.site-footer::before,
+.site-footer::after,
+.site-footer ul::after {
+  animation: rotate 10s linear infinite;
+  transform-origin: center;
+}
 
 // Apparition des titres
 .fade-up {
-  display: inline-block; /* Permet à la translation de fonctionner correctement */
-  transform: translateY(100px); /* Décale le titre vers le bas */
-  transition: transform 1s ease-out; /* Durée et type de transition */
+  display: inline-block;
+  transform: translateY(100px);
+  transition: transform 1s ease-out;
 }
 
 .fade-up.visible {
-  transform: translateY(0); /* Rétablit la position originale */
+  transform: translateY(0);
 }
-  
+
 // CSS section Oscars
 .festival-nomination {
   display: grid;
-  grid-template-columns: 70% 30%; /* Définit deux colonnes */
+  grid-template-columns: 70% 30%;
   width: 70%;
   margin: auto;
   height: 200px;
@@ -66,20 +142,34 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
-}
 
-.festival-nomination-col1 > p {
-  color: #FFF5E9;
-  font-size: 1.8rem;
-  text-align: left;
-  padding: 6%;
+  > p {
+    color: $color-text;
+    font-size: $font-size-small;
+    font-weight: 700;
+    text-align: left;
+    padding: 6%;
+  }
 }
 
 .festival-nomination-col2 {
   align-self: center;
+
+  > img {
+    width: 100%;
+    height: auto;
+  }
 }
 
-.festival-nomination-col2 > img {
-  width: 100%;
-  height: auto;
+/*Caroussel personnages*/
+.story {
+  #characters {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
+
+
+

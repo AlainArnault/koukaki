@@ -795,9 +795,9 @@ textarea {
 	background-image: url("./assets/images/orange_characters_bg.png");
 }
 
-.story #characters div {
+/*.story #characters div {
 	flex: 1;
-}
+}*/
 
 .story #characters .other-characters {
 	display: flex;

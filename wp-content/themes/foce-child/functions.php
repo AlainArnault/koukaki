@@ -15,8 +15,16 @@ if ( get_stylesheet() !== get_template() ) {
     } );
 }
 
-//Ajout du fichier animation.js
+// Ajout des fichiers Swiper et aimations
 function enqueue_child_theme_scripts() {
-    wp_enqueue_script('animations-js', get_stylesheet_directory_uri() . '/js/animations.js', array('jquery'), null, true);
+    // Enregistrer et charger le CSS de Swiper depuis un CDN
+    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.css');
+
+    // Enregistrer et charger le JS de Swiper depuis un CDN
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js', array('jquery'), null, true);
+
+    // Enregistrer et charger le fichier animation.js
+    wp_enqueue_script('animations-js', get_stylesheet_directory_uri() . '/js/animations.js', array('jquery', 'swiper-js'), null, true);
 }
+
 add_action('wp_enqueue_scripts', 'enqueue_child_theme_scripts');
