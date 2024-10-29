@@ -14,7 +14,10 @@ if ( get_stylesheet() !== get_template() ) {
         return get_option( 'theme_mods_' . get_template(), $default );
     } );
 }
-
+//Ajout script skrollr
+    wp_enqueue_script( 'skrollr-cdn', 'https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js');
+    wp_enqueue_script( 'skrollr', get_stylesheet_directory_uri() . '/js/skrollr.js', array(), '1.0.0', true);
+    
 // Ajout des fichiers Swiper et aimations
 function enqueue_child_theme_scripts() {
     // Enregistrer et charger le CSS de Swiper depuis un CDN

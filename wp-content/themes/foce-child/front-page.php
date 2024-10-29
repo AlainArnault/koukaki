@@ -9,7 +9,7 @@ get_header();
             <source src="<?php echo home_url(); ?>/wp-content/themes/foce-child/assets/video/Studio+Koukaki-vidéo+header+sans+son+(1).mp4" type="video/mp4">
         </video>
         <div class="content">
-            <h1><img class="fade-in-appear" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants"></h1>
+            <h1><img class="anim-logo" src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?>" alt="logo Fleurs d'oranger & chats errants"></h1>
         </div>
     </section>
 
@@ -24,6 +24,12 @@ get_header();
         <article id="place">
             <div>
                 <h3>Le Lieu</h3>
+                <div class="clouds big-cloud">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/big_cloud.png'; ?>" data-bottom-top="transform:translateX(0px)" data-top-bottom="transform:translateX(-300px)">
+                </div>
+                <div class="clouds little-cloud">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/img/little_cloud.png'; ?>" data-bottom-top="transform:translateX(0px)" data-top-bottom="transform:translateX(-300px)">
+                </div>
                 <p><?php echo get_theme_mod('place'); ?></p>
             </div>
 

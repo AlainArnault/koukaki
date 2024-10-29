@@ -1,3 +1,11 @@
+@charset "UTF-8";
+/*
+Theme Name: Foce Child
+Description: Theme enfant de Foce
+Author: Studio Koukaki
+Template: foce
+Version: 0.1.0
+*/
 .banner {
   position: relative;
   min-height: 806px;
@@ -65,17 +73,39 @@
     transform: translateY(0);
   }
 }
-.fade-in-appear {
+.anim-logo {
   opacity: 0;
-  animation: fadeInAppear 2s forwards;
+  animation: appear 2s forwards, animLogo 3s ease-in infinite reverse;
 }
 
-@keyframes fadeInAppear {
+@keyframes appear {
   0% {
     opacity: 0;
+    transform: translate(0);
+  }
+  55% {
+    transform: translate(1px, 4px);
   }
   100% {
     opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes animLogo {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(5px, -6px);
+  }
+  50% {
+    transform: translate(-8px, -5px);
+  }
+  75% {
+    transform: translate(-4px, 8px);
+  }
+  100% {
+    transform: translate(0);
   }
 }
 @keyframes rotate {
@@ -90,8 +120,8 @@
 .story__article::after,
 #studio h2::before,
 #studio h2::after,
-.site-footer::before,
-.site-footer::after,
+.festival-nomination::before,
+.festival-nomination::after,
 .site-footer ul::after {
   animation: rotate 10s linear infinite;
   transform-origin: center;
@@ -107,42 +137,83 @@
   transform: translateY(0);
 }
 
-.festival-nomination {
-  display: grid;
-  grid-template-columns: 70% 30%;
-  width: 70%;
-  margin: auto;
-  height: 200px;
-}
-
-.festival-nomination-col1 {
-  background-image: url("assets/img/orange_oscars.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
-}
-.festival-nomination-col1 > p {
-  color: #FFF5E9;
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-align: left;
-  padding: 6%;
-}
-
-.festival-nomination-col2 {
-  align-self: center;
-}
-.festival-nomination-col2 > img {
-  width: 100%;
-  height: auto;
-}
-
 /*Caroussel personnages*/
 .story #characters {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.story #place {
+  background-image: url("./assets/img/Studio_Koukaki-image_place.png");
+}
+
+#place {
+  position: relative;
+}
+#place .clouds {
+  margin: 0;
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  filter: blur(15px);
+}
+#place .little-cloud {
+  top: 35%;
+  right: 35%;
+}
+
+.site-footer::before, .site-footer::after {
+  display: none;
+}
+
+.festival-nomination {
+  position: relative;
+}
+.festival-nomination::before, .festival-nomination::after {
+  position: absolute;
+  content: url("./assets/img/Sunflower.png");
+}
+.festival-nomination::before {
+  left: -10em;
+  top: -6em;
+}
+.festival-nomination::after {
+  content: url("./assets/img/orchid.png");
+  right: -18em;
+  bottom: 14em;
+}
+
+.festival-nomination { /* Mise en grid de la section */
+  display: grid;
+  grid-template-columns: 70% 30%;
+  width: 70%;
+  margin: 12em auto;
+  height: 200px;
+  position: relative;
+}
+.festival-nomination .festival-nomination-col1 { /* Réglages colonne 1 */
+  background-image: url("assets/img/orange_oscars.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+.festival-nomination .festival-nomination-col1 > p {
+  color: #FFF5E9;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  text-shadow: 0 0 6px #000;
+  text-align: left;
+  padding: 11%;
+}
+.festival-nomination .festival-nomination-col2 { /* Réglages colonne 2 */
+  align-self: center;
+}
+.festival-nomination .festival-nomination-col2 > img {
+  width: 100%;
+  height: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
