@@ -75,7 +75,7 @@ Version: 0.1.0
 }
 .anim-logo {
   opacity: 0;
-  animation: appear 2s forwards, animLogo 3s ease-in infinite reverse;
+  animation: appear 2s forwards, animLogo 2s linear infinite reverse;
 }
 
 @keyframes appear {
@@ -108,14 +108,6 @@ Version: 0.1.0
     transform: translate(0);
   }
 }
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .story h2::after,
 .story__article::after,
 #studio h2::before,
@@ -123,10 +115,18 @@ Version: 0.1.0
 .festival-nomination::before,
 .festival-nomination::after,
 .site-footer ul::after {
-  animation: rotate 10s linear infinite;
+  animation: rotationFleurs 5s linear both infinite;
   transform-origin: center;
 }
 
+@keyframes rotationFleurs {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .fade-up {
   display: inline-block;
   transform: translateY(100px);
@@ -214,6 +214,192 @@ Version: 0.1.0
 .festival-nomination .festival-nomination-col2 > img {
   width: 100%;
   height: auto;
+}
+
+#new-navigation {
+  width: 100%;
+}
+#new-navigation .navbar {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 555px) {
+  #new-navigation .navbar {
+    justify-content: space-between;
+  }
+}
+#new-navigation .navbar .site-title a:hover {
+  color: #000000;
+}
+@media (max-width: 996px) {
+  #new-navigation .navbar .site-title {
+    font-size: calc(0.875rem + 1vw);
+  }
+}
+#new-navigation .navbar .burger-icons {
+  position: absolute;
+  cursor: pointer;
+  right: 6%;
+  height: 30px;
+  width: 30px;
+  background-image: url("assets/img/burger.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+#new-navigation .navbar .burger-icons.active {
+  background-image: url("assets/img/Burger_croix.png");
+}
+#new-navigation #burger-navigation {
+  position: fixed;
+  visibility: hidden;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+  background: #FFF5E9 url("assets/img/hibiscus_footer.png") no-repeat;
+  background-position: right -320px bottom -320px;
+  opacity: 0;
+  transition: opacity 500ms ease 0s, visibility 0s linear 500ms;
+}
+#new-navigation #burger-navigation.active {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+#new-navigation #burger-navigation .burger-elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3% 0 0 0;
+  margin: 0;
+  height: 100vh;
+}
+#new-navigation #burger-navigation .burger-elements .logo-burger {
+  max-width: 254px;
+}
+#new-navigation #burger-navigation .burger-elements .nav-flower {
+  position: absolute;
+  animation: rotationFleurs 5s linear both infinite;
+  transform-origin: center;
+}
+#new-navigation #burger-navigation .burger-elements .nav-flower:nth-child(1) {
+  left: -3%;
+  top: 11%;
+}
+#new-navigation #burger-navigation .burger-elements .nav-flower:nth-child(2) {
+  right: 24%;
+  top: 17%;
+}
+#new-navigation #burger-navigation .burger-elements .nav-flower:nth-child(3) {
+  left: 20%;
+  bottom: 36%;
+}
+#new-navigation #burger-navigation .burger-elements .nav-flower:nth-child(4) {
+  right: -2.5%;
+  bottom: 44%;
+  width: 100px;
+  height: 99px;
+}
+@media (max-width: 996px) {
+  #new-navigation #burger-navigation .burger-elements .nav-flower {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+@media (max-width: 555px) {
+  #new-navigation #burger-navigation .burger-elements .nav-flower {
+    display: none;
+  }
+}
+#new-navigation #burger-navigation .burger-elements .nav-cat {
+  position: absolute;
+  animation: animLogo 1.5s linear infinite;
+}
+#new-navigation #burger-navigation .burger-elements .nav-cat:nth-child(8) {
+  left: 29%;
+  top: 24%;
+}
+#new-navigation #burger-navigation .burger-elements .nav-cat:nth-child(9) {
+  right: 22%;
+  bottom: 34%;
+}
+#new-navigation #burger-navigation .burger-elements .nav-cat:nth-child(10) {
+  left: 7%;
+  bottom: 9%;
+}
+@media (max-width: 996px) {
+  #new-navigation #burger-navigation .burger-elements .nav-cat {
+    animation: none;
+    opacity: 0.4;
+  }
+}
+@media (max-width: 555px) {
+  #new-navigation #burger-navigation .burger-elements .nav-cat {
+    display: none;
+  }
+}
+#new-navigation #burger-navigation .burger-elements .burger-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+#new-navigation #burger-navigation .burger-elements .burger-links li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: calc(1.5rem + 2.5vw);
+  line-height: calc(1.5rem + 7vw);
+  opacity: 0;
+  transform: translateY(40px);
+}
+#new-navigation #burger-navigation .burger-elements .burger-links li.menu-clic {
+  animation: titreMenu 500ms ease-in-out forwards;
+}
+#new-navigation #burger-navigation .burger-elements .burger-links li.menu-clic:nth-child(1) {
+  animation-delay: 100ms;
+}
+#new-navigation #burger-navigation .burger-elements .burger-links li.menu-clic:nth-child(2) {
+  animation-delay: 200ms;
+}
+#new-navigation #burger-navigation .burger-elements .burger-links li.menu-clic:nth-child(3) {
+  animation-delay: 300ms;
+}
+#new-navigation #burger-navigation .burger-elements .burger-links li.menu-clic:nth-child(4) {
+  animation-delay: 400ms;
+}
+#new-navigation #burger-navigation .burger-elements .burger-links li a {
+  text-decoration: none;
+  transition: text-shadow 450ms ease;
+}
+#new-navigation #burger-navigation .burger-elements .burger-links li a:hover {
+  color: #000000;
+  text-shadow: 0px 0px 14px rgba(255, 92, 0, 0.8);
+}
+
+@keyframes titreMenu {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.no-scroll {
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=style.css.map */

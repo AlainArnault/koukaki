@@ -52,3 +52,65 @@ const swiper = new Swiper('.swiper-container', {
         slideShadows: false,
     },
 });
+
+//Parallaxe nuages
+document.addEventListener('DOMContentLoaded', () => {
+    const bigCloud = document.getElementById("big_cloud");
+    const littleCloud = document.getElementById("little_cloud");
+    const bannerImg = document.querySelector('.banner_img');
+    const backgroundVideo = document.getElementById("background-video");
+    const placeSection = document.getElementById("place");
+    const bannerSection = document.querySelector(".banner");
+    const initialOffset = 300; // Valeur de décalage initial
+  
+    // Animation pour les nuages
+    const applyCloudParallax = () => {
+      const decalage = window.scrollY;
+      let decalageCloud = decalage / 4;
+      let decalageLittleCloud = decalage / 4;
+
+      bigCloud.style.transform = 'translateX(' + (-(decalageCloud - initialOffset)) + 'px)';
+      littleCloud.style.transform = 'translateX(' + (-(decalageLittleCloud - initialOffset)) + 'px)';
+      
+    };
+  
+    const cloudObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          window.addEventListener('scroll', applyCloudParallax);
+        } else {
+          window.removeEventListener('scroll', applyCloudParallax);
+        }
+      });
+    });
+  
+    // Observer la section place
+    cloudObserver.observe(placeSection);
+  
+    // Animation pour l'image de bannière et la vidéo
+    const scrollRatio = 0.5; // Ratio pour le mouvement de la bannière et de la vidéo
+  
+    const applyBannerParallax = () => {
+      const currentScrollPosition = window.scrollY;
+      const bannerImgOffset = currentScrollPosition * scrollRatio;
+      const backgroundVideoOffset = currentScrollPosition * (1 - scrollRatio);
+  
+      bannerImg.style.transform = `translateY(${bannerImgOffset}px)`;
+      backgroundVideo.style.transform = `translateY(${backgroundVideoOffset}px)`;
+    };
+  
+    const bannerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          window.addEventListener('scroll', applyBannerParallax);
+        } else {
+          window.removeEventListener('scroll', applyBannerParallax);
+        }
+      });
+    });
+  
+    // Observer la section banner
+    bannerObserver.observe(bannerSection);
+  });
+  
+  
