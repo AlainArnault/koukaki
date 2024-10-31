@@ -28,7 +28,7 @@
 	<header id="masthead" class="site-header">
     <nav id="new-navigation">
             <div class="navbar main-navigation">
-                <h3 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h3>
+                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                 <button class="burger-icons"></button>
             </div>
             
@@ -42,7 +42,7 @@
                     <img class="nav-flower" src="<?php echo get_stylesheet_directory_uri() . '/assets/img/random_flower.png'; ?> ">
                     
 
-                    <img class="logo-burger" src="<?php echo get_stylesheet_directory_uri() . '/assets/img/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
+                    <img class="logo-burger" src="<?php echo get_stylesheet_directory_uri() . '/assets/img/simple_logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
                     
                     <ul class="burger-links">
                         <li><a href="#story">Histoire</a></li>

@@ -12,12 +12,27 @@ $font-size-large: 2rem;
 
 // Styles de la bannière
 .banner {
+  background-image: url("./assets/img/banner.png");
   position: relative;
   min-height: 806px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+
+  // Ajout du pseudo-élément pour afficher l’image de fond en fallback
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./assets/img/banner.png");
+    background-size: cover;
+    background-position: center;
+    z-index: 0; // derrière les autres éléments
+  }
 
   #background-video {
     position: absolute;
@@ -231,6 +246,11 @@ $font-size-large: 2rem;
   margin: 12em auto;
   height: 200px;
   position: relative;
+  @media (max-width: 768px) { // Une colonne sur les écrans plus petits
+    grid-template-columns: 1fr;
+    margin-top: 8em;
+    margin-bottom: 20em;
+  }
 
   .festival-nomination-col1 { /* Réglages colonne 1 */
     background-image: url("assets/img/orange_oscars.png");
@@ -256,8 +276,7 @@ $font-size-large: 2rem;
       width: 100%;
       height: auto;
     }
-  }
-}
+}}
 
 // Nouveau Menu Nav
 
@@ -274,9 +293,6 @@ $font-size-large: 2rem;
           justify-content: space-between ;
       }
       .site-title {
-          a:hover {
-          color:#000000;
-          }
           @media (max-width:996px) {
               font-size: calc(0.875rem + 1vw);
           }
@@ -419,7 +435,7 @@ $font-size-large: 2rem;
                       transition: text-shadow 450ms ease;
                       &:hover {
                           color: #000000;
-                          text-shadow: 0px 0px 14px rgba(255,92,0,0.8);
+                          text-shadow: 0px 0px 15px #FF5C00;
                       }
 
                   }
